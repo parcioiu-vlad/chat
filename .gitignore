@@ -1,0 +1,43 @@
+/server/target
+/server/chat.iml
+/server/.idea
+
+# compiled output
+/webapp/dist
+/webapp/tmp
+
+# dependencies
+/webapp/node_modules
+
+# IDEs and editors
+/webapp/.idea
+/webapp/webapp.iml
+/webapp.project
+/webapp.classpath
+/webapp.c9/
+/webapp*.launch
+/webapp.settings/
+
+# IDE - VSCode
+/webapp.vscode/*
+/webapp!.vscode/settings.json
+/webapp!.vscode/tasks.json
+/webapp!.vscode/launch.json
+/webapp!.vscode/extensions.json
+
+# misc
+/webapp/.sass-cache
+/webapp/connect.lock
+/webapp/coverage/*
+/webapp/libpeerconnection.log
+/webappnpm-debug.log
+/webapptestem.log
+/webapp/typings
+
+# e2e
+/webapp/e2e/*.js
+/webapp/e2e/*.map
+
+#System Files
+/webapp.DS_Store
+/webappThumbs.db
