@@ -1,7 +1,7 @@
 /server/target
 /server/chat.iml
 /server/.idea
-
+.idea
 # compiled output
 /webapp/dist
 /webapp/tmp
