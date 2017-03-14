@@ -1,11 +1,10 @@
 package com.example.chat.controller;
 
+import com.example.chat.model.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -30,6 +29,7 @@ public class ChatRoomController {
 
         LOG.debug("ChatRoomController -> postMessage - posting message " + message + " to room " + roomId);
 
-        simpMessagingTemplate.convertAndSend("/socket", message);
+        Message chatMessage = new Message(message);
+        simpMessagingTemplate.convertAndSend("/socket", chatMessage);
     }
 }
