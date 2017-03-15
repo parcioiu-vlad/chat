@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Config} from '../config/config';
 
 declare var SockJS: any;
 declare var Stomp: any;
@@ -12,15 +13,14 @@ export class ChatComponent {
 
   private stompClient;
 
-  public constructor() {
-    var self = this;
-
+  public constructor(private config: Config) {
+    let self = this;
     //TODO externalize address
-    var socket = new SockJS('http://localhost:9090/gs-guide-websocket');
+    let socket = new SockJS(config.getEnv("urls").serverAddress + config.getEnv("urls").socketEndpoint);
     self.stompClient = Stomp.over(socket);
     self.stompClient.connect({}, function (frame) {
       console.log('Connected: ' + frame);
-      self.stompClient.subscribe('/socket', function (greeting) {
+      self.stompClient.subscribe(config.getEnv("urls").socket + '/1', function (greeting) {
         console.log("received");
       });
     });

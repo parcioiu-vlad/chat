@@ -30,6 +30,6 @@ public class ChatRoomController {
         LOG.debug("ChatRoomController -> postMessage - posting message " + message + " to room " + roomId);
 
         Message chatMessage = new Message(message);
-        simpMessagingTemplate.convertAndSend("/socket", chatMessage);
+        simpMessagingTemplate.convertAndSend("/socket/" + roomId, chatMessage);
     }
 }
