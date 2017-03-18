@@ -1,0 +1,13 @@
+<div>
+  <div class="containerX">
+    <div class="container">
+      <textarea md-input></textarea>
+    </div>
+
+    <div class="container">
+      <md-input-container class="demo-full-width">
+        <input mdInput (keyup.enter)="sendMessage()" [(ngModel)]="messageToBeSent">
+      </md-input-container>
+    </div>
+  </div>
+</div>

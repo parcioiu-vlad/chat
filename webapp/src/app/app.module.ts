@@ -5,20 +5,32 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import 'hammerjs';
-import { MaterialModule } from '@angular/material';
+import {
+  MaterialModule,
+  OverlayContainer,
+  FullscreenOverlayContainer,
+  MdSelectionModule,
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import {Config} from "./config/config";
+import {RoomComponent} from "./room/room.component";
 
 export const AppRoutes = [
-  { path: 'chat', component: ChatComponent }
+  { path: 'chat', component: ChatComponent },
+  { path: 'room/:id', component: RoomComponent}
 ];
+
+export function loadConfig(config: Config) {
+  return () => config.load()
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    RoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +42,7 @@ export const AppRoutes = [
   providers: [Config,
     {
       provide: APP_INITIALIZER,
-      useFactory: (config: Config) => () => config.load(),
+      useFactory: loadConfig,
       deps: [Config],
       multi: true
     }
