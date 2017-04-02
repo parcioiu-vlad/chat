@@ -13,8 +13,8 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { ChatComponent } from './chat/chat.component';
 import {Config} from "./config/config";
+import { ChatComponent } from './chat/chat.component';
 import {RoomComponent} from "./room/room.component";
 
 export const AppRoutes = [

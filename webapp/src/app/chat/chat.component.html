@@ -1,4 +1,17 @@
 <div>
-  <div>create room placeholder</div>
-  <div>select room placeholder</div>
+  <md-card>
+    <md-card-title>
+      Create room
+    </md-card-title>
+    <md-input-container>
+      <input mdInput placeholder="Room name" [(ngModel)]="room.name">
+    </md-input-container>
+    <button md-button (click)="createRoom()">Create</button>
+  </md-card>
+
+  <md-card>
+    <md-card-title>
+      Select room
+    </md-card-title>
+  </md-card>
 </div>
