@@ -19,7 +19,7 @@ import {RoomComponent} from "./room/room.component";
 
 export const AppRoutes = [
   { path: 'chat', component: ChatComponent },
-  { path: 'room/:id', component: RoomComponent}
+  { path: 'rooms/:id', component: RoomComponent}
 ];
 
 export function loadConfig(config: Config) {
