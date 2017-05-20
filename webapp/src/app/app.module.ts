@@ -37,7 +37,7 @@ export function loadConfig(config: Config) {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(AppRoutes),
-    MaterialModule.forRoot()
+    MaterialModule
   ],
   providers: [Config,
     {
