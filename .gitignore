@@ -30,7 +30,7 @@
 /webapp/connect.lock
 /webapp/coverage/*
 /webapp/libpeerconnection.log
-/webappnpm-debug.log
+/webapp/npm-debug.log
 /webapptestem.log
 /webapp/typings
 
