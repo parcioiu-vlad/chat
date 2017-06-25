@@ -4,5 +4,9 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  serverAddress: "http://localhost:9090/",
+  restUrl: "rest/v1/",
+  socketEndpoint: "gs-guide-websocket",
+  socket: "/socket"
 };

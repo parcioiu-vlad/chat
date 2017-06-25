@@ -1,16 +1,16 @@
 import {Http} from "@angular/http";
-import {Config} from "../config/config";
 import {Injectable} from "@angular/core";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RoomService {
 
-  constructor(private http: Http,  private config: Config) {
+  constructor(private http: Http) {
 
   }
 
   sendMessage(roomId: number, message: string) {
-    let url = this.config.getEnv("urls").serverAddress + this.config.getEnv("urls").restUrl + "rooms/" + roomId;
+    let url = environment.serverAddress + environment.restUrl + "rooms/" + roomId;
     return this.http.post(url, message).subscribe(response => console.log(response))
   }
 

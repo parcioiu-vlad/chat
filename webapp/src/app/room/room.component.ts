@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {Config} from "../config/config";
 import {RoomService} from "./room.service";
+import { environment } from '../../environments/environment';
 
 declare let SockJS: any;
 declare let Stomp: any;
@@ -18,25 +18,25 @@ export class RoomComponent {
   private messageToBeSent: string;
   private stompClient;
 
-  constructor(private router: ActivatedRoute, private config: Config, private roomService: RoomService) {
+  constructor(private router: ActivatedRoute, private roomService: RoomService) {
     let self = this;
 
     this.router.params.subscribe(params => {
       this.roomId = params['id']
     });
 
-    let socket = new SockJS(config.getEnv("urls").serverAddress + config.getEnv("urls").socketEndpoint);
+    let socket = new SockJS(environment.serverAddress + environment.socketEndpoint);
     self.stompClient = Stomp.over(socket);
     self.stompClient.connect({}, function (frame) {
       console.log('Connected: ' + frame);
-      self.stompClient.subscribe(config.getEnv("urls").socket + '/1', function (greeting) {
+      self.stompClient.subscribe(environment.socket + '/' + self.roomId, function (greeting) {
         console.log("received");
       });
     });
   }
 
   private sendMessage() {
-    this.roomService.sendMessage(1, this.messageToBeSent)
+    this.roomService.sendMessage(this.roomId, this.messageToBeSent)
   }
 
 }

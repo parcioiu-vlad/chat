@@ -3,6 +3,7 @@ import {NgModule, APP_INITIALIZER} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import 'hammerjs';
 import {
@@ -13,7 +14,6 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import {Config} from "./config/config";
 import { ChatComponent } from './chat/chat.component';
 import {RoomComponent} from "./room/room.component";
 
@@ -21,10 +21,6 @@ export const AppRoutes = [
   { path: 'chat', component: ChatComponent },
   { path: 'rooms/:id', component: RoomComponent}
 ];
-
-export function loadConfig(config: Config) {
-  return () => config.load()
-}
 
 @NgModule({
   declarations: [
@@ -34,18 +30,11 @@ export function loadConfig(config: Config) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(AppRoutes),
     MaterialModule
-  ],
-  providers: [Config,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: loadConfig,
-      deps: [Config],
-      multi: true
-    }
   ],
   bootstrap: [AppComponent]
 })
