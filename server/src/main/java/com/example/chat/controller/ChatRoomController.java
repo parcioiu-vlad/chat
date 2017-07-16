@@ -44,4 +44,5 @@ public class ChatRoomController {
         Message chatMessage = new Message(message);
         simpMessagingTemplate.convertAndSend("/socket/" + roomId, chatMessage);
     }
+
 }

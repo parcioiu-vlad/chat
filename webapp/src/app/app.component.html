@@ -1,6 +1,10 @@
 <md-toolbar color="primary">
   <button md-button routerLink="chat">Chat</button>
   <button md-button routerLink="room/1">Room</button>
+
+  <span class="fill-remaining-space"></span>
+
+  <button md-button (click)="login()" style="float: right">Login</button>
 </md-toolbar>
 
 <router-outlet></router-outlet>

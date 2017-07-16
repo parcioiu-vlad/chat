@@ -8,5 +8,6 @@ export const environment = {
   serverAddress: "http://localhost:9090/",
   restUrl: "rest/v1/",
   socketEndpoint: "gs-guide-websocket",
-  socket: "/socket"
+  socket: "/socket",
+  loginUrl: "login/google"
 };
