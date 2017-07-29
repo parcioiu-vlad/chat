@@ -1,13 +1,15 @@
 package com.example.chat.controller;
 
-import com.example.chat.model.Message;
 import com.example.chat.model.Room;
 import com.example.chat.service.RoomService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -34,15 +36,6 @@ public class ChatRoomController {
     @RequestMapping(method = RequestMethod.POST)
     public Room createRoom(@RequestBody Room room) {
         return roomService.createRoom(room);
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "{roomId}")
-    public void postMessage(@RequestBody String message, @PathVariable Long roomId) {
-
-        LOG.debug("ChatRoomController -> postMessage - posting message " + message + " to room " + roomId);
-
-        Message chatMessage = new Message(message);
-        simpMessagingTemplate.convertAndSend("/socket/" + roomId, chatMessage);
     }
 
 }
