@@ -16,6 +16,7 @@ import {
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import {RoomComponent} from "./room/room.component";
+import {TokenService} from "./service/token.service";
 
 export const AppRoutes = [
   { path: 'chat', component: ChatComponent },
@@ -35,6 +36,9 @@ export const AppRoutes = [
     HttpModule,
     RouterModule.forRoot(AppRoutes),
     MaterialModule
+  ],
+  providers: [
+    TokenService
   ],
   bootstrap: [AppComponent]
 })

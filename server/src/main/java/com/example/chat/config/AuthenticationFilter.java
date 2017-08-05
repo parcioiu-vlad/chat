@@ -1,8 +1,5 @@
 package com.example.chat.config;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -16,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.cert.CertificateException;
+import java.text.ParseException;
 
 /**
  * Created by parci on 7/16/2017.
@@ -43,7 +41,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
                     Authentication authentication = this.tokenProvider.getAuthentication(jwt);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
-            } catch (ExpiredJwtException | MalformedJwtException | SignatureException | IllegalArgumentException | IOException | CertificateException e) {
+            } catch (ParseException | IllegalArgumentException | IOException | CertificateException e) {
                 LOG.error("AuthenticationFilter -> doFilterInternal()", e);
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             }

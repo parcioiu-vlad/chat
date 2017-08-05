@@ -9,5 +9,7 @@ export const environment = {
   restUrl: "rest/v1/",
   socketEndpoint: "gs-guide-websocket",
   socket: "/socket",
-  loginUrl: "login/google"
+  loginUrl: "login/google",
+  authCodeParam: "code",
+  tokenHeaderName: "token"
 };
