@@ -24,6 +24,8 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     private TokenProvider tokenProvider;
 
+    private final String authHeaderName = "token";
+
     public AuthenticationFilter(TokenProvider tokenProvider) {
 
         this.tokenProvider = tokenProvider;
@@ -55,7 +57,12 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     private String resolveToken(HttpServletRequest request) {
 
-        String bearerToken = request.getHeader("token");
+        String bearerToken = request.getHeader(authHeaderName);
+
+        if (StringUtils.isEmpty(bearerToken)) {
+            bearerToken = request.getParameter(authHeaderName);
+        }
+
         return bearerToken;
     }
 }
